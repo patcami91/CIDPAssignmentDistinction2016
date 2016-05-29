@@ -26,13 +26,13 @@ public class PlayerController : MonoBehaviour
 
 
     private Rigidbody rb;
-    private AudioSource audio;
+    private AudioSource audioSound;
     private CanvasController canvasController;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        audio = GetComponent<AudioSource>();
+        audioSound = GetComponent<AudioSource>();
         canvasController = GameObject.FindObjectOfType<CanvasController>();
 
         Time.timeScale = 1f;
@@ -60,16 +60,16 @@ public class PlayerController : MonoBehaviour
         {
             
             HP_points -= 10;
-            audio.clip = DmgPkup;
-            audio.Play();
+            audioSound.clip = DmgPkup;
+            audioSound.Play();
         }
 
 
         if (other.gameObject.tag == "Coin_Pickup")
         {
             Destroy(other.gameObject);
-            audio.clip = coinPkup;
-            audio.Play();
+            audioSound.clip = coinPkup;
+            audioSound.Play();
             Coins_points += 10;
             
            
@@ -80,44 +80,39 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.tag == "HP_Pickup")
         {
             Destroy(other.gameObject);
-            audio.clip = HpPkup;
-            audio.Play();
+            audioSound.clip = HpPkup;
+            audioSound.Play();
             HP_points += 5;
-
         }
 
         if (other.gameObject.tag == "deathZone")
         {
-
             canvasController.Switch("Game Over");
-            audio.clip = gameOver;
-            audio.Play();
+            audioSound.clip = gameOver;
+            audioSound.Play();
             Time.timeScale = 0f;
-          
         }
 
         if (other.gameObject.tag == "Hr_Glass")
         {
             Destroy(other.gameObject);
             GameObject.FindObjectOfType<Timer>().AdjustStartTime(5f);
-            audio.clip = hourGlass;
-            audio.Play();
+            audioSound.clip = hourGlass;
+            audioSound.Play();
         }
 
         if (other.gameObject.tag == "Winner")
         {
-            audio.clip = gameFinish;
-            audio.Play();
+            audioSound.clip = gameFinish;
+            audioSound.Play();
             SceneManager.LoadScene(SceneManager.GetActiveScene ().buildIndex + 1);
-
         }
 
         if (other.gameObject.tag == "ReadyLvls")
         {
-            audio.clip = gameFinish;
-            audio.Play();
+            audioSound.clip = gameFinish;
+            audioSound.Play();
             SceneManager.LoadScene("Menu"); ;
-
         }
     }
 }
