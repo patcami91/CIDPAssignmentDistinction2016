@@ -28,7 +28,7 @@ public class anim : MonoBehaviour
     public void startanim()
     {
         
-        GetComponent<Animator>().SetTrigger("start");
+        GetComponent<Animator>().SetTrigger("animatebuttonall");
     }
 
    
