@@ -111,5 +111,13 @@ public class PlayerController : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene ().buildIndex + 1);
 
         }
+
+        if (other.gameObject.tag == "ReadyLvls")
+        {
+            audio.clip = gameFinish;
+            audio.Play();
+            SceneManager.LoadScene("Menu"); ;
+
+        }
     }
 }
